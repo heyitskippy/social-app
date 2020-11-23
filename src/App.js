@@ -7,6 +7,9 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link'
+
+import { ThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles'
 
 import MyHeader from './components/MyHeader'
@@ -16,8 +19,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'© '}
-      <Link color="inherit" href="http://localhost/">
-        Social app
+      <Link color="inherit" href="https://github.com/heyitskippy">
+        heyitskippy
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -37,22 +40,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+})
+
 export default function MyApp() {
   const classes = useStyles()
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <MyHeader />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <MyGrid />
-          <Box pt={4}>
+          <Box component="footer" pt={4}>
             <Copyright />
           </Box>
         </Container>
       </main>
-    </React.Fragment>
+    </ThemeProvider>
   )
 }
