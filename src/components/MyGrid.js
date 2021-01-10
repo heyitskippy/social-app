@@ -15,34 +15,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CenteredGrid() {
-  const classes = useStyles()
+const post = (props) => {
+  const { content, key } = props
+  return (
+    <Grid key={key} item xs={12}>
+      <MyCard content={content} />
+    </Grid>
+  )
+}
 
-  // var rows = [];
-  // for (var i = 0; i < numrows; i++) {
-  //   // note: we are adding a key prop here to allow react to uniquely identify each
-  //   // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-  //   rows.push(<ObjectRow key={i} />);
-  // }
-  // return <tbody>{rows}</tbody>;
+const posts = (number) => {
+  let arr = []
+
+  for (let key = 1; key < number + 1; key++) {
+    arr.push(post({ key, content: `Content of ${key} post.` }))
+  }
+  return arr
+}
+
+export default function MyGrid() {
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={3}>
-          <MyCard />
-        </Grid>
-        <Grid item xs={3}>
-          <MyCard />
-        </Grid>
-        <Grid item xs={3}>
-          <MyCard />
-        </Grid>
-        <Grid item xs={3}>
-          <MyCard />
-        </Grid>
+        {posts(10)}
         <Grid item xs={12}>
-          <Paper className={classes.paper}>String</Paper>
+          <Paper className={classes.paper}>Durov, give back the wall!</Paper>
         </Grid>
       </Grid>
     </div>

@@ -40,17 +40,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const theme = createMuiTheme({
+const muiTheme = createMuiTheme({
   palette: {
     type: 'dark',
   },
 })
 
-export default function MyApp() {
+export default function App() {
   const classes = useStyles()
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={muiTheme}>
       <CssBaseline />
       <MyHeader />
       <main className={classes.content}>

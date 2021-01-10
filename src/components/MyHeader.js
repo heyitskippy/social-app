@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function ButtonAppBar() {
+export default function MyHeader() {
   const classes = useStyles()
 
   return (
